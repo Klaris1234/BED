@@ -23,6 +23,7 @@ const getBookById = async (req, res) => {
     res.status(500).send("Error retrieving book");
   }
 };
+
 const createBook = async (req, res) => {
     const newBook = req.body;
     try {
@@ -32,8 +33,9 @@ const createBook = async (req, res) => {
       console.error(error);
       res.status(500).send("Error creating book");
     }
-  };
-  const updateBook = async (req, res) => {
+};
+
+const updateBook = async (req, res) => {
     const bookId = parseInt(req.params.id);
     const newBookData = req.body;
   
@@ -47,11 +49,11 @@ const createBook = async (req, res) => {
       console.error(error);
       res.status(500).send("Error updating book");
     }
-  };
-  
-  const deleteBook = async (req, res) => {
+};
+
+const deleteBook = async (req, res) => {
     const bookId = parseInt(req.params.id);
-  
+    
     try {
       const success = await Book.deleteBook(bookId);
       if (!success) {
@@ -62,12 +64,12 @@ const createBook = async (req, res) => {
       console.error(error);
       res.status(500).send("Error deleting book");
     }
-  };
-  
-  module.exports = {
+};
+
+module.exports = {
     getAllBooks,
     createBook,
     getBookById,
     updateBook,
     deleteBook,
-  };
+};
